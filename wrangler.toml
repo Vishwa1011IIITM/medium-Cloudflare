@@ -7,7 +7,7 @@ compatibility_date = "2025-01-19"
 [vars]
 # MY_VAR = "my-variable"
 DATABASE_URL = "prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMWRhZDA4NDUtZjUwNS00MTMxLWEzOTMtNTkwYTQwYjIxMGE3IiwidGVuYW50X2lkIjoiNDU0OWFmOTg5MGZkZTU3OTQ5ZDg3ZDVlZTI0OWQ3NTZiZThhOTIzYTU3N2ZmYzcyNjE5NmM3YjM4OThhZDcwMCIsImludGVybmFsX3NlY3JldCI6ImE5MWY5OGJjLTc3NDgtNGEzYi1iNzY3LWIxZjYwMzZjYzA4YyJ9.x7HMa5fa2SrpM2EzY2XkPORwp3xImRSDhEpXXrokjFY"
-
+JWT_SECRET = "whatthehell"
 # [[kv_namespaces]]
 # binding = "MY_KV_NAMESPACE"
 # id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"

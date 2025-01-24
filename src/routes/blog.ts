@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
+import { createBlogInput, updateBlogInput } from "@vishwa1011/medium-common";
 import { Hono } from "hono";
 import { verify } from "hono/jwt";
 
@@ -34,12 +35,21 @@ bookRouter.use(async (c, next) => {
 });
 
 bookRouter.post('/', async (c) => {
+	
+	const body = await c.req.json();
+	const { success } = createBlogInput.safeParse(body);
+    if(!success){
+      c.status(411);
+      return c.json({
+        message : "Inputs are incorrect."
+      })
+    }
+	
 	const userId = c.get('userId');
 	const prisma = new PrismaClient({
 		datasourceUrl: c.env?.DATABASE_URL	,
 	}).$extends(withAccelerate());
 
-	const body = await c.req.json();
 	const post = await prisma.post.create({
 		data: {
 			title: body.title,
@@ -53,12 +63,21 @@ bookRouter.post('/', async (c) => {
 })
 
 bookRouter.put('/', async (c) => {
+	
+	const body = await c.req.json();
+	const { success } = updateBlogInput.safeParse(body);
+    if(!success){
+      c.status(411);
+      return c.json({
+        message : "Inputs are incorrect."
+      })
+    }
+
 	const userId = c.get('userId');
 	const prisma = new PrismaClient({
 		datasourceUrl: c.env?.DATABASE_URL	,
 	}).$extends(withAccelerate());
 
-	const body = await c.req.json();
 	prisma.post.update({
 		where: {
 			id: body.id,
